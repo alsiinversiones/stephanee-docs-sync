@@ -1,4 +1,10 @@
 export default async function handler(req, res) {
+  const AUTH_TOKEN = process.env.STEPHANEE_SECRET_KEY;
+
+  if (req.headers.authorization !== `Bearer ${AUTH_TOKEN}`) {
+    return res.status(401).json({ message: "No autorizado" });
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Método no permitido" });
   }
@@ -14,3 +20,4 @@ export default async function handler(req, res) {
     resultado: `Archivo '${filename}' con ${content.length} caracteres recibido.`,
   });
 }
+
