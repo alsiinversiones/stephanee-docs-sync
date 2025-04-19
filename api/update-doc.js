@@ -9,10 +9,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: "Faltan datos" });
   }
 
-  // Lógica ficticia: simular éxito
   return res.status(200).json({
     message: "Documento actualizado correctamente",
     docId: documentId,
     caracteres: content.length,
   });
 }
+
